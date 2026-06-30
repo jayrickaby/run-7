@@ -1,2 +1,5 @@
 .qtcreator/
 .idea/
+.env
+*.egg-info
+.eggs/
