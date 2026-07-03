@@ -1,6 +1,6 @@
 [project]
 name = "run-7"
-version = "0.0.0"
+version = "0.1.0"
 description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.14"
@@ -16,7 +16,7 @@ commit_parser = "conventional"
 logging_use_named_masks = false
 major_on_zero = true
 allow_zero_version = true
-repo_dir = "/home/jay/projects/run_7"
+repo_dir = "/home/jay/Projects/run_7"
 no_git_verify = false
 tag_format = "v{version}"
 add_partial_tags = false
