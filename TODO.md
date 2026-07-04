@@ -1,0 +1,12 @@
+# TODO
+- [ ] Add Browse Dialog
+- [ ] Add 'Can't find ...' Messagebox
+- [ ] Add Config
+- - [ ] Custom App Title (link to KDE/ Windows shortcuts?)
+- - [ ] Custom App Icon (link to KDE/ Windows shortcuts?)
+- - [ ] Option for short OS (Windows/Linux/MacOS) or long OS (Windows 7, openSUSE, Tahoe 26)
+- - [ ] History length
+- - [ ] Customise Shortcuts(?)
+- - [ ] Save History
+- [ ] Add History
+- [ ] Add Shortcuts
