@@ -15,7 +15,7 @@ class Application(QObject):
 
     @Property(str, constant=True)
     def icon(self):
-        return str(self.__parentPath / "qml" / "assets" / "icons" / "win7.ico")
+        return str(self.__parentPath / "assets" / "logo" / "icon.png")
 
     @Property(str, constant=True)
     def parentPath(self):
