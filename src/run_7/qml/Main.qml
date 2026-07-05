@@ -1,5 +1,7 @@
+import QtCore
 import QtQuick
 import QtQuick.Controls
+import QtQuick.Dialogs
 import QtQuick.Layouts
 
 import frutiger7
@@ -7,6 +9,8 @@ import jayrickaby.run7.app 1.0
 import jayrickaby.run7.system 1.0
 
 ApplicationWindow {
+    id: root
+
     Application {
         id: pyApplication
     }
@@ -15,8 +19,12 @@ ApplicationWindow {
         id: pySystem
     }
 
+    readonly property url dirHome: StandardPaths.writableLocation(StandardPaths.HomeLocation)
     readonly property url dirAssets: Qt.resolvedUrl( pyApplication.externalFolder + "/frutiger7/" + "/assets/items/window/")
     readonly property string imgBackground: "background.png"
+
+    property alias comboBox : comboBox
+    property alias browseDialog : browseDialog
 
     width: 397
     height: 174
@@ -27,11 +35,9 @@ ApplicationWindow {
     maximumHeight: height
 
     visible: true
-    title: qsTr("Run–7")
+    title: qsTr(pyApplication.currentTitle)
 
     flags: Qt.Window | Qt.WindowCloseButtonHint
-
-
 
     topPadding: 20
     bottomPadding: 20
@@ -88,6 +94,8 @@ ApplicationWindow {
                 renderType: Text.NativeRendering
             }
             ComboBox {
+                id: comboBox
+
                 Layout.fillWidth: true
                 Layout.preferredHeight: 23
                 Layout.alignment: Qt.AlignTop
@@ -103,14 +111,16 @@ ApplicationWindow {
 
             spacing: 8
             Button {
-                text: "OK"
+                action: runAction
                 Layout.preferredHeight: 24
                 Layout.preferredWidth: 86
+
+                enabled: comboBox.editText !== ""
 
                 textVCenterOffset: -2
             }
             Button {
-                text: "Cancel"
+                action: closeAction
                 Layout.rightMargin: 1
                 Layout.preferredHeight: 24
                 Layout.preferredWidth: 86
@@ -118,7 +128,7 @@ ApplicationWindow {
                 textVCenterOffset: -2
             }
             Button {
-                text: "Browse..."
+                action: browseAction
                 Layout.preferredHeight: 24
                 Layout.preferredWidth: 86
 
@@ -145,5 +155,52 @@ ApplicationWindow {
             source: dirAssets + imgBackground
 
         }
+    }
+
+    FileDialog {
+        id: browseDialog
+        currentFolder: dirHome
+        onAccepted: {
+            let resolved = Qt.resolvedUrl(currentFile)
+            comboBox.contentItem.text = "\"" + new URL(resolved).pathname + "\""
+        }
+    }
+
+    InstructionDialog {
+        id: cantFindDialog
+        // buttons: MessageDialog.Ok
+        contentText: `${pySystem.simpleOsName} cannot find '${comboBox.editText}'. Make sure you typed the name correctly, and then try again.`
+        // contentText: `Windows cannot find '${comboBox.editText}'. Make sure you typed the name correctly, and then try again.`
+        title: comboBox.editText
+
+        // icon: MessageDialog.Critical
+
+        // onAccepted: root.visible = true
+    }
+
+    Action {
+        id: runAction
+        text: qsTr("OK")
+        onTriggered: {
+            let success = pySystem.openUrl(comboBox.editText)
+            // TODO: Make this properly work. Should hide when cantFindDialog appears.
+            // root.visible = false
+
+            success ? root.close() : cantFindDialog.show()
+        }
+    }
+
+    Action {
+        id: browseAction
+        text: qsTr("Browse...")
+        shortcut: "ALT+B"
+        onTriggered: browseDialog.open()
+    }
+
+    Action {
+        id: closeAction
+        text: qsTr("Cancel")
+        shortcut: StandardKey.Cancel
+        onTriggered: root.close()
     }
 }

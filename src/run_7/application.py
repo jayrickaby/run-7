@@ -10,6 +10,8 @@ class Application(QObject):
     def __init__(self, parent=None):
         super().__init__(parent)
         self.__parentPath = Path(__file__).parent
+        self.__defaultTitle = "Run–7"
+        self.__title = None
 
     @Property(str, constant=True)
     def icon(self):
@@ -26,3 +28,7 @@ class Application(QObject):
     @Property(str, constant=True)
     def externalFolder(self):
         return str(self.__parentPath.parent.parent.absolute() / "external")
+
+    @Property(str, constant=True)
+    def currentTitle(self):
+        return self.__defaultTitle if self.__title is None else self.__title

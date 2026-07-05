@@ -1,6 +1,9 @@
 # TODO
-- [ ] Add Browse Dialog
-- [ ] Add 'Can't find ...' Messagebox
+- [X] Add Browse Dialog
+- [X] Add URL Running
+- [X] Add 'Can't find ...' Messagebox
+- [ ] Custom File Browser(?)
+- [ ] .desktop entry creation
 - [ ] Add Config
 - - [ ] Custom App Title (link to KDE/ Windows shortcuts?)
 - - [ ] Custom App Icon (link to KDE/ Windows shortcuts?)
@@ -8,5 +11,6 @@
 - - [ ] History length
 - - [ ] Customise Shortcuts(?)
 - - [ ] Save History
+- - [ ] .desktop file editing
 - [ ] Add History
 - [ ] Add Shortcuts
