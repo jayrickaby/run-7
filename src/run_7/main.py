@@ -14,6 +14,7 @@ if __name__ == "__main__":
 
     app = QGuiApplication(sys.argv)
     app.setWindowIcon(QIcon(application.icon))
+    app.setDesktopFileName("run_7")
 
     engine = QQmlApplicationEngine()
     engine.addImportPath(application.parentPath)
