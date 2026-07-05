@@ -1,5 +1,8 @@
 # Run–7
+
+<img src="https://github.com/jayrickaby/run_7/blob/master/src/run_7/assets/logo/logo_trans.png" />
 An recreation of Window 7's Run Application
+
 
 ## About this project
 This is an accurate-as-possible recreation of Window 7's Run Application in Qt Quick and Python. It is based on Inspecting the original application's components with Inspect.exe, extracting assets via msstyleeditor and Resource Hacker, along with comparing screenshots pixel-by-pixel in GIMP.
