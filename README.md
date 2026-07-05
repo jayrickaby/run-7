@@ -11,6 +11,7 @@ I made this in order to familiarise myself with creating a simple Qt Quick appli
 - A browse dialog to precisely choose an application
 - A recreation of Window 7's Aero theme for increased accuracy
 - Reactive text based on the Operating System you are using
+- ~~Run History~~ (TODO)
 - ~~A config to customise parts of the application~~ (TODO)
 
 ## Gallery
