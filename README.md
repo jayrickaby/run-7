@@ -1,7 +1,7 @@
 # Run–7
 
 <img src="https://github.com/jayrickaby/run_7/blob/master/src/run_7/assets/logo/logo_trans.png" />
-An recreation of Window 7's Run Application
+A recreation of Window 7's Run Application
 
 
 ## About this project
