@@ -1,4 +1,4 @@
-from PySide6.QtCore import QObject, Property
+from PySide6.QtCore import QObject, Property, QUrl
 from PySide6.QtQml import QmlElement
 from pathlib import Path
 
@@ -13,21 +13,21 @@ class Application(QObject):
         self.__defaultTitle = "Run–7"
         self.__title = None
 
-    @Property(str, constant=True)
+    @Property(QUrl, constant=True)
     def icon(self):
-        return str(self.__parentPath / "assets" / "logo" / "icon.png")
+        return QUrl.fromLocalFile(str(self.__parentPath / "assets" / "logo" / "icon.png"))
 
-    @Property(str, constant=True)
+    @Property(QUrl, constant=True)
     def parentPath(self):
-        return self.__parentPath
+        return QUrl.fromLocalFile(self.__parentPath)
 
-    @Property(str, constant=True)
+    @Property(QUrl, constant=True)
     def projectRootFolder(self):
-        return str(self.__parentPath.parent.parent.absolute())
+        return QUrl.fromLocalFile((self.__parentPath.parent.parent.absolute()))
 
-    @Property(str, constant=True)
+    @Property(QUrl, constant=True)
     def externalFolder(self):
-        return str(self.__parentPath.parent.parent.absolute() / "external")
+        return QUrl.fromLocalFile(str(self.__parentPath.parent.parent.absolute() / "external"))
 
     @Property(str, constant=True)
     def currentTitle(self):
