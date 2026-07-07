@@ -206,4 +206,10 @@ ApplicationWindow {
         enabled: !browseDialog.visible
         onTriggered: root.close()
     }
+
+    onActiveChanged: {
+        if (active) {
+            comboBox.selectAll()
+        }
+    }
 }
