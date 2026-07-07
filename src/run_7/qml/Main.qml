@@ -159,6 +159,7 @@ ApplicationWindow {
     FileDialog {
         id: browseDialog
         currentFolder: dirHome
+
         onAccepted: {
             let resolved = Qt.resolvedUrl(currentFile)
             comboBox.contentItem.text = "\"" + new URL(resolved).pathname + "\""
@@ -202,8 +203,8 @@ ApplicationWindow {
     Action {
         id: closeAction
         text: qsTr("Cancel")
-        shortcut: StandardKey.Cancel
-        enabled: !browseDialog.visible
+        // TODO: Is there a better way to do this?
+        shortcut: (browseDialog.visible || cantFindDialog.visible) ? "" : StandardKey.Cancel
         onTriggered: root.close()
     }
 
