@@ -4,13 +4,13 @@
 - [X] Add 'Can't find ...' Messagebox
 - [ ] Custom File Browser(?)
 - [ ] .desktop entry creation
-- [ ] Add Config
-- - [ ] Custom App Title (link to KDE/ Windows shortcuts?)
-- - [ ] Custom App Icon (link to KDE/ Windows shortcuts?)
-- - [ ] Option for short OS (Windows/Linux/MacOS) or long OS (Windows 7, openSUSE, Tahoe 26)
-- - [ ] History length
+- [X] Add Config
+- - [X] Custom App Title (link to KDE/ Windows shortcuts?)
+- - [X] Custom App Icon (link to KDE/ Windows shortcuts?)
+- - [X] Option for short OS (Windows/Linux/MacOS) or long OS (Windows 7, openSUSE, Tahoe 26)
+- - [X] History length
 - - [ ] Customise Shortcuts(?)
-- - [ ] Save History
+- - [X] Save History
 - - [ ] .desktop file editing
 - [X] Add History
 - [ ] Add Shortcuts

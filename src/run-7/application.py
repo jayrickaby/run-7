@@ -2,8 +2,12 @@ from PySide6.QtCore import QObject, Property, QUrl
 from PySide6.QtQml import QmlElement
 from pathlib import Path
 
-QML_IMPORT_NAME = "jayrickaby.run7.app"
+QML_IMPORT_NAME = "jayrickaby.run7.application"
 QML_IMPORT_MAJOR_VERSION = 1
+
+ORG_NAME = "JayRickaby"
+ORG_DOMAIN = "jayrickaby.com"
+APP_NAME = "Run-7"
 
 @QmlElement
 class Application(QObject):
@@ -11,10 +15,9 @@ class Application(QObject):
         super().__init__(parent)
         self.__parentPath = Path(__file__).parent
         self.__defaultTitle = "Run–7"
-        self.__title = None
 
     @Property(QUrl, constant=True)
-    def icon(self):
+    def defaultIcon(self):
         return QUrl.fromLocalFile(str(self.__parentPath / "qml" / "assets" / "icons" / "icon.png"))
 
     @Property(QUrl, constant=True)
@@ -30,5 +33,7 @@ class Application(QObject):
         return QUrl.fromLocalFile(str(self.__parentPath.parent.parent.absolute() / "external"))
 
     @Property(str, constant=True)
-    def currentTitle(self):
-        return self.__defaultTitle if self.__title is None else self.__title
+    def defaultTitle(self):
+        return self.__defaultTitle
+
+application = Application()
