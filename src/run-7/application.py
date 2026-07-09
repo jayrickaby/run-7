@@ -16,9 +16,9 @@ class Application(QObject):
         self.__parentPath = Path(__file__).parent
         self.__defaultTitle = "Run–7"
 
-    @Property(QUrl, constant=True)
+    @Property(str, constant=True)
     def defaultIcon(self):
-        return QUrl.fromLocalFile(str(self.__parentPath / "qml" / "assets" / "icons" / "icon.png"))
+        return str(self.__parentPath / "qml" / "assets" / "icons" / "icon.png")
 
     @Property(QUrl, constant=True)
     def parentPath(self):
