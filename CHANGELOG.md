@@ -2,6 +2,23 @@
 
 <!-- version list -->
 
+## v0.4.0 (2026-07-09)
+
+### Bug Fixes
+
+- **backend**: Adjust how application returns icon so that it doesn't break when trying to url the
+  already-url
+  ([`9e68cde`](https://github.com/jayrickaby/run-7/commit/9e68cde02a9e3ea39fdddb599ed0c1b864f2d278))
+
+- **styling**: Restore appicon and add mipmaps
+  ([`65f44d5`](https://github.com/jayrickaby/run-7/commit/65f44d543328e323371b79270e34ee3eb36824ef))
+
+### Features
+
+- **backend**: Add config
+  ([`12a16a5`](https://github.com/jayrickaby/run-7/commit/12a16a56b8a4db951dd9532b7483e59d1cf57474))
+
+
 ## v0.3.0 (2026-07-09)
 
 ### Bug Fixes
