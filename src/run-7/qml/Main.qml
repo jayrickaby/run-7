@@ -68,6 +68,8 @@ ApplicationWindow {
                 Layout.topMargin: 2
                 Layout.alignment: Qt.AlignTop
 
+                mipmap: true
+
                 source: pyApplication.icon
             }
             Text {

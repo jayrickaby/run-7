@@ -15,7 +15,7 @@ class Application(QObject):
 
     @Property(QUrl, constant=True)
     def icon(self):
-        return QUrl.fromLocalFile(str(self.__parentPath / "assets" / "logo" / "icon.png"))
+        return QUrl.fromLocalFile(str(self.__parentPath / "qml" / "assets" / "icons" / "icon.png"))
 
     @Property(QUrl, constant=True)
     def parentPath(self):
