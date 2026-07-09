@@ -14,7 +14,7 @@ if __name__ == "__main__":
 
     app = QGuiApplication(sys.argv)
     app.setWindowIcon(QIcon(application.icon.toLocalFile()))
-    app.setDesktopFileName("run_7")
+    app.setDesktopFileName("run-7")
 
     app.setOrganizationName("JayRickaby")
     app.setOrganizationDomain("jayrickaby.com")
