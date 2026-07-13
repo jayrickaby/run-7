@@ -23,9 +23,9 @@ I made this in order to familiarise myself with creating a simple Qt Quick appli
 
 ## Setup
 ```
-git clone https://github.com/jayrickaby/run_7.git && cd run_7
+git clone https://github.com/jayrickaby/run-7.git && cd run-7
 git submodule update --init --recursive
-uv run src/run_7/main.py
+uv run src/run-7/main.py
 ```
 Requirements: [uv](https://docs.astral.sh/uv/)
 
