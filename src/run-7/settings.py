@@ -12,8 +12,6 @@ class Settings(QObject):
         super().__init__(parent)
         self._settings = QSettings(ORG_NAME, APP_NAME)
 
-        self._settings.setDefaultFormat(QSettings.Format.IniFormat)
-
         # Appearance
         self.__prettyOsNames = bool(self._settings.value("Appearance/prettyOsNames", False))
         self.__icon = self._settings.value("Appearance/icon", application.defaultIcon)
