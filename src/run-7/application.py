@@ -1,39 +1,49 @@
-from PySide6.QtCore import QObject, Property, QUrl
-from PySide6.QtQml import QmlElement
 from pathlib import Path
 
-QML_IMPORT_NAME = "jayrickaby.run7.application"
-QML_IMPORT_MAJOR_VERSION = 1
+from PySide6.QtCore import Property, QObject, QUrl
 
 ORG_NAME = "JayRickaby"
 ORG_DOMAIN = "jayrickaby.com"
 APP_NAME = "Run-7"
 
-@QmlElement
 class Application(QObject):
     def __init__(self, parent=None):
         super().__init__(parent)
-        self.__parentPath = Path(__file__).parent
-        self.__defaultTitle = "Run–7"
+
+        base = Path(__file__).parent
+
+        if (base / "external").exists():
+            self._external_path = base / "external"
+            self._parent_path = base
+        else:
+            self._external_path = base.parent.parent / "external"
+            self._parent_path = base
+        self._default_title = "Run–7"
+
+    def get_default_icon(self):
+        return str(self._parent_path / "qml" / "assets" / "icons" / "icon.png")
+
+    def get_default_title(self):
+        return self._default_title
 
     @Property(str, constant=True)
-    def defaultIcon(self):
-        return str(self.__parentPath / "qml" / "assets" / "icons" / "icon.png")
-
-    @Property(QUrl, constant=True)
-    def parentPath(self):
-        return QUrl.fromLocalFile(self.__parentPath)
-
-    @Property(QUrl, constant=True)
-    def projectRootFolder(self):
-        return QUrl.fromLocalFile((self.__parentPath.parent.parent.absolute()))
-
-    @Property(QUrl, constant=True)
-    def externalFolder(self):
-        return QUrl.fromLocalFile(str(self.__parentPath.parent.parent.absolute() / "external"))
+    def default_icon(self):
+        return str(self._parent_path / "qml" / "assets" / "icons" / "icon.png")
 
     @Property(str, constant=True)
-    def defaultTitle(self):
-        return self.__defaultTitle
+    def default_title(self):
+        return self._default_title
+
+    @Property(QUrl, constant=True)
+    def external_folder(self):
+        return QUrl.fromLocalFile(str(self._external_path))
+
+    @Property(QUrl, constant=True)
+    def parent_path(self):
+        return QUrl.fromLocalFile(self._parent_path)
+
+    @Property(QUrl, constant=True)
+    def project_root_folder(self):
+        return QUrl.fromLocalFile((self._parent_path.parent.parent.absolute()))
 
 application = Application()

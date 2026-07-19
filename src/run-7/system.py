@@ -1,28 +1,25 @@
+import os
 import platform
 import webbrowser
-import os
+
+from PySide6.QtCore import Property, Slot, QObject, QUrl
+
 from settings import settings
 
-from PySide6.QtCore import QObject, QUrl, Property, Slot
-from PySide6.QtQml import QmlElement
-
-QML_IMPORT_NAME = "jayrickaby.run7.system"
-QML_IMPORT_MAJOR_VERSION = 1
-
-@QmlElement
 class System(QObject):
     @Property(str, constant=True)
-    def simpleOsName(self):
-        name = platform.system()
+    def os_name(self):
+        if settings.os_override:
+            return settings.os_override
 
-        if name == "Darwin":
-            return "macOS"
+        if settings.pretty_os_names:
+            return self.pretty_os_name
 
-        return name
+        return self.simple_os_name
 
     @Property(str, constant=True)
-    def prettyOsName(self):
-        name = self.simpleOsName
+    def pretty_os_name(self):
+        name = self.simple_os_name
 
         if name == "Windows":
             return f"{name} {platform.win32_ver()[0]}"
@@ -36,17 +33,16 @@ class System(QObject):
         return ""
 
     @Property(str, constant=True)
-    def osName(self):
-        if settings.osOverride:
-            return settings.osOverride
+    def simple_os_name(self):
+        name = platform.system()
 
-        if settings.prettyOsNames:
-            return self.prettyOsName
+        if name == "Darwin":
+            return "macOS"
 
-        return self.simpleOsName
+        return name
 
     @Slot(str, result=bool)
-    def openUrl(self, url):
+    def open_url(self, url):
         cleanUrl = url.replace('"', "").strip()
 
         if cleanUrl.startswith(("http://", "https://", "file://")):
@@ -64,7 +60,7 @@ class System(QObject):
         return webbrowser.open(target)
 
     @Slot(QUrl, result=str)
-    def processFilePath(self, url):
+    def process_file_path(self, url):
         return os.path.abspath(url.toLocalFile())
 
 system = System()

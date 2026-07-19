@@ -1,28 +1,47 @@
+from application import application, APP_NAME, ORG_NAME
+from PySide6.QtCore import Property, Slot, QObject, QSettings, QUrl
 
-from application import application, ORG_NAME, APP_NAME
-from PySide6.QtCore import QObject, Property, Slot, QUrl, QSettings
-from PySide6.QtQml import QmlElement
-
-QML_IMPORT_NAME = "jayrickaby.run7.settings"
-QML_IMPORT_MAJOR_VERSION = 1
-
-@QmlElement
 class Settings(QObject):
     def __init__(self, parent=None):
         super().__init__(parent)
         self._settings = QSettings(ORG_NAME, APP_NAME)
 
-        # Appearance
-        self.__prettyOsNames = bool(self._settings.value("Appearance/prettyOsNames", False))
-        self.__icon = self._settings.value("Appearance/icon", application.defaultIcon)
-        self.__osOverride = self._settings.value("Appearance/osOverride", None)
-        self.__title = str(self._settings.value("Appearance/title", application.defaultTitle))
+        self._settings.beginGroup("Appearance")
+        self._pretty_os_names = bool(
+            self._settings.value(
+                "prettyOsNames", False
+            )
+        )
+        self._icon = self._settings.value(
+            "icon", application.get_default_icon()
+        )
+        self.__osOverride = self._settings.value(
+            "osOverride",
+            None
+        )
 
-        # History
-        self.__limitHistorySize = int( self._settings.value("History/limitHistorySize", 5))
-        self.__urlHistory = self.__checkUrlHistoryValid( self._settings.value("History/urlHistory", []))
+        self._title = str(
+            self._settings.value(
+                "title", application.get_default_title()
+             )
+        )
+        self._settings.endGroup()
 
-    def __checkUrlHistoryValid(self, history):
+        self._settings.beginGroup("History")
+        self._limit_history_size = int(
+            self._settings.value(
+                "limitHistorySize", 5
+            )
+        )
+
+        self._url_history = self._check_url_history_valid(
+            self._settings.value(
+                "urlHistory", []
+            )
+        )
+        self._settings.endGroup()
+
+    def _check_url_history_valid(self, history):
         if type(history) is list:
             pass
         elif history:
@@ -33,32 +52,35 @@ class Settings(QObject):
         return history
 
     @Property(int, constant=True)
-    def limitHistorySize(self):
-        return self.__limitHistorySize
+    def limit_history_size(self):
+        return self._limit_history_size
 
     @Property(list, constant=True)
-    def urlHistory(self):
-        return self.__urlHistory
+    def url_history(self):
+        return self._url_history
 
     @Property(bool, constant=True)
-    def prettyOsNames(self):
-        return self.__prettyOsNames
+    def pretty_os_names(self):
+        return self._pretty_os_names
 
     @Property(str, constant=True)
     def title(self):
-        return self.__title
+        return self._title
 
     @Property(QUrl, constant=True)
     def icon(self):
-        return QUrl.fromLocalFile(self.__icon)
+        return QUrl.fromLocalFile(self._icon)
+
+    def get_icon(self):
+        return QUrl.fromLocalFile(self._icon)
 
     @Property(str, constant=True)
-    def osOverride(self):
+    def os_override(self):
         return self.__osOverride
 
     @Slot(list)
-    def setUrlHistory(self, urls):
-        self.__urlHistory = urls
+    def set_url_history(self, urls):
+        self._url_history = urls
         self._settings.setValue("History/urlHistory", urls)
 
 settings = Settings()

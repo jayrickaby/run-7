@@ -13,7 +13,7 @@ ApplicationWindow {
     id: root
 
     readonly property url dirHome: StandardPaths.writableLocation(StandardPaths.HomeLocation)
-    readonly property url dirAssets: Qt.resolvedUrl( Application.externalFolder + "/frutiger7/" + "/assets/items/window/")
+    readonly property url dirAssets: Qt.resolvedUrl( Application.external_folder + "/frutiger7/" + "/assets/items/window/")
     readonly property string imgBackground: "background.png"
 
     property alias comboBox : comboBox
@@ -62,7 +62,7 @@ ApplicationWindow {
                 Layout.preferredHeight: 41
                 Layout.alignment: Qt.AlignTop
 
-                text: `Type the name of a program, folder, document, or Internet resource, and ${System.osName} will open it for you.`
+                text: `Type the name of a program, folder, document, or Internet resource, and ${System.os_name} will open it for you.`
 
                 font.letterSpacing: 0.10
                 font.pointSize: 9
@@ -101,18 +101,18 @@ ApplicationWindow {
 
                 Component.onCompleted: {
                     // Make sure current list is limited
-                    let currentQueue = Array.from(Settings.urlHistory)
+                    let currentQueue = Array.from(Settings.url_history);
 
-                    if (Settings.limitHistorySize > -1) {
-                        while (currentQueue.length > Settings.limitHistorySize) {
-                            currentQueue.pop()
+                    if (Settings.limit_history_size > -1) {
+                        while (currentQueue.length > Settings.limit_history_size) {
+                            currentQueue.pop();
                         }
 
-                        Settings.setUrlHistory(currentQueue)
+                        Settings.set_url_history(currentQueue);
                     }
 
                     // Set model only after adjusting it
-                    model = currentQueue
+                    model = currentQueue;
 
                     if (model.length > 0) {
                         contentItem.text = model[0];
@@ -177,22 +177,22 @@ ApplicationWindow {
         currentFolder: dirHome
 
         onAccepted: {
-            let resolved = System.processFilePath(currentFile)
-            comboBox.contentItem.text = "\"" + resolved + "\""
+            let resolved = System.process_file_path(currentFile);
+            comboBox.contentItem.text = "\"" + resolved + "\"";
         }
     }
 
     InstructionDialog {
         id: cantFindDialog
         title: comboBox.editText
-        contentText: `${System.osName} cannot find '${comboBox.editText}'. Make sure you typed the name correctly, and then try again.`
+        contentText: `${System.os_name} cannot find '${comboBox.editText}'. Make sure you typed the name correctly, and then try again.`
         instructionType: InstructionDialog.Critical
 
         buttons: DialogButtonBox.Ok
 
         onButtonClicked: (role) => {
             if (role === DialogButtonBox.AcceptRole) {
-                cantFindDialog.close()
+                cantFindDialog.close();
             }
         }
     }
@@ -201,34 +201,34 @@ ApplicationWindow {
         id: runAction
         text: qsTr("OK")
         onTriggered: {
-            let success = System.openUrl(comboBox.editText)
+            let success = System.open_url(comboBox.editText)
             // TODO: Make this properly work. Should hide when cantFindDialog appears.
             // root.visible = false
 
             if (success) {
-                let newUrl = comboBox.editText.trim()
+                let newUrl = comboBox.editText.trim();
 
-                let currentQueue = Array.from(Settings.urlHistory)
+                let currentQueue = Array.from(Settings.url_history);
 
-                let existingIndex = currentQueue.indexOf(newUrl)
+                let existingIndex = currentQueue.indexOf(newUrl);
 
                 if (existingIndex !== -1) {
-                    currentQueue.splice(existingIndex, 1)
+                    currentQueue.splice(existingIndex, 1);
                 }
 
                 currentQueue.unshift(newUrl);
 
-                if (Settings.limitHistorySize > -1 && currentQueue.length > Settings.limitHistorySize) {
-                    currentQueue.pop()
+                if (Settings.limit_history_size > -1 && currentQueue.length > Settings.limit_history_size) {
+                    currentQueue.pop();
                 }
 
-                Settings.setUrlHistory(currentQueue)
+                Settings.set_url_history(currentQueue);
 
-                root.close()
-                return
+                root.close();
+                return;
             }
 
-            cantFindDialog.show()
+            cantFindDialog.show();
         }
     }
 
@@ -247,9 +247,5 @@ ApplicationWindow {
         onTriggered: root.close()
     }
 
-    onActiveChanged: {
-        if (active) {
-            comboBox.selectAll()
-        }
-    }
+    onActiveChanged: { if (active) comboBox.selectAll(); }
 }
