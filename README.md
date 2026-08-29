@@ -21,6 +21,13 @@ I made this in order to familiarise myself with creating a simple Qt Quick appli
 ![Preview_Main](docs/assets/previews/preview_mainwindow.png)
 ![Preview_Dialog](docs/assets/previews/preview_unknowndialog.png)
 
+## Running
+- Download the binary from the latest release,`run-7`
+- You may need to give executable permissions via `chmod +x ./run-7` in terminal, or by adjusting the properties in the right-click context menu.
+- Double click, or use `./run-7` in the terminal to run.
+
+Note that you may need to install the `libxcb-cursor0` on Linux.
+
 ## Building from Source
 ```
 git clone https://github.com/jayrickaby/run-7.git && cd run-7
