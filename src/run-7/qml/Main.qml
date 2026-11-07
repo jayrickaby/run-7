@@ -12,7 +12,6 @@ ApplicationWindow {
     id: root
 
     readonly property url dirHome: StandardPaths.writableLocation(StandardPaths.HomeLocation)
-    readonly property url dirAssets: Qt.resolvedUrl( Application.external_folder + "/frutiger7/" + "/assets/items/window/")
     readonly property string imgBackground: "background.png"
 
     property alias comboBox : comboBox
@@ -144,24 +143,6 @@ ApplicationWindow {
                 Layout.preferredHeight: 24
                 Layout.preferredWidth: 86
             }
-        }
-    }
-
-    background: ColumnLayout{
-        BorderImage {
-            Layout.alignment: Qt.AlignTop
-            Layout.fillWidth: true
-            Layout.preferredHeight: 114
-
-            border.left: 1
-            border.right: 1
-            border.top: 1
-            border.bottom: 1
-
-            horizontalTileMode: BorderImage.Repeat
-            verticalTileMode: BorderImage.Repeat
-
-            source: dirAssets + imgBackground
         }
     }
 
