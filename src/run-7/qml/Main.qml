@@ -134,23 +134,17 @@ ApplicationWindow {
 
                 highlighted: true
                 enabled: comboBox.editText !== ""
-
-                textVCenterOffset: -2
             }
             Button {
                 action: closeAction
                 Layout.rightMargin: 1
                 Layout.preferredHeight: 24
                 Layout.preferredWidth: 86
-
-                textVCenterOffset: -2
             }
             Button {
                 action: browseAction
                 Layout.preferredHeight: 24
                 Layout.preferredWidth: 86
-
-                textVCenterOffset: -2
             }
         }
     }
