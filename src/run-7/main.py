@@ -34,7 +34,6 @@ if __name__ == "__main__":
 
     engine = QQmlApplicationEngine()
     engine.addImportPath(application.parent_path.toLocalFile())
-    engine.addImportPath(application.external_folder.toLocalFile())
     engine.loadFromModule("qml", "Main")
     if not engine.rootObjects():
         sys.exit(-1)
