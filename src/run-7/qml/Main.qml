@@ -8,8 +8,6 @@ import jayrickaby.run7.application 1.0
 import jayrickaby.run7.settings 1.0
 import jayrickaby.run7.system 1.0
 
-import "Components/Dialogs"
-
 ApplicationWindow {
     id: root
 
@@ -177,19 +175,15 @@ ApplicationWindow {
         }
     }
 
-    InstructionDialog {
+    MessageDialog {
+        // TODO: Critical Message
         id: cantFindDialog
         title: comboBox.editText
-        contentText: `${System.os_name} cannot find '${comboBox.editText}'. Make sure you typed the name correctly, and then try again.`
-        instructionType: InstructionDialog.Critical
+        text: `${System.os_name} cannot find '${comboBox.editText}'. Make sure you typed the name correctly, and then try again.`
 
         buttons: DialogButtonBox.Ok
 
-        onButtonClicked: (role) => {
-            if (role === DialogButtonBox.AcceptRole) {
-                cantFindDialog.close();
-            }
-        }
+        onAccepted: cantFindDialog.close();
     }
 
     Action {
@@ -224,7 +218,7 @@ ApplicationWindow {
                 return;
             }
 
-            cantFindDialog.show();
+            cantFindDialog.open();
         }
     }
 
