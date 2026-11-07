@@ -23,10 +23,13 @@ Originally made for the Hackclub Program [Macondo](https://macondo.hackclub.com/
 ![Preview_Main](docs/assets/previews/preview_mainwindow.png)
 ![Preview_Dialog](docs/assets/previews/preview_unknowndialog.png)
 
+Screenshots taken in KDE, using [AeroThemePlasma](https://gitgud.io/aeroshell/atp/aerothemeplasma).
+
 ## Running
 - Download the binary from the [latest release](https://github.com/jayrickaby/run-7/releases/latest), or [build it from source](#building-from-source)
 - You may need to give executable permissions via `chmod +x ./run-7` in terminal, or by adjusting the properties in the right-click context menu.
 - Double click the executable, or use `./run-7` in the terminal, to run.
+
 Requirements: [PySide6](https://pypi.org/project/PySide6/)
 
 
