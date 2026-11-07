@@ -8,7 +8,6 @@ python -m nuitka src/run-7/main.py \
   --output-filename=run-7 \
   --onefile \
   --include-data-dir=src/run-7/qml=qml \
-  --include-data-dir=external=external \
   --noinclude-dlls=libQt6Charts* \
   --noinclude-dlls=libQt6Quick3D* \
   --noinclude-dlls=libQt6Sensors* \
