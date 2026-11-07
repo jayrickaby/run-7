@@ -12,12 +12,12 @@ I made this in order to familiarise myself with creating a simple Qt Quick appli
 Originally made for the Hackclub Program [Macondo](https://macondo.hackclub.com/).
 
 ## Features
-- Running applications, opening websites and viewing files
-- A browse dialog to precisely choose an application
-- A recreation of Window 7's Aero theme for increased accuracy
-- Reactive text based on the OS you are using
-- Run History showing the last 'n' items
-- A config to customise parts of the application
+- Running applications, opening websites and viewing files.
+- A browse dialog to precisely choose an application.
+- A recreation of Window 7's Aero theme for increased accuracy.
+- Reactive text based on the OS you are using.
+- Run History showing the last 'n' items.
+- A config to customise parts of the application.
 
 ## Gallery
 ![Preview_Main](docs/assets/previews/preview_mainwindow.png)
@@ -26,11 +26,11 @@ Originally made for the Hackclub Program [Macondo](https://macondo.hackclub.com/
 Screenshots taken in KDE, using [AeroThemePlasma](https://gitgud.io/aeroshell/atp/aerothemeplasma).
 
 ## Running
-- Download the binary from the [latest release](https://github.com/jayrickaby/run-7/releases/latest), or [build it from source](#building-from-source)
+- Download the binary from the [latest release](https://github.com/jayrickaby/run-7/releases/latest), or [build it from source](#building-from-source).
 - You may need to give executable permissions via `chmod +x ./run-7` in terminal, or by adjusting the properties in the right-click context menu.
 - Double click the executable, or use `./run-7` in the terminal, to run.
 
-Requirements: [PySide6](https://pypi.org/project/PySide6/)
+Requirements: [PySide6](https://pypi.org/project/PySide6/).
 
 
 ## Building from Source
@@ -43,7 +43,7 @@ chmod +x ./build.sh && ./build.sh
 # Run the application
 chmod +x ./build/run-7 && ./build/run-7 
 ```
-Requirements: [uv](https://docs.astral.sh/uv/)
+Requirements: [uv](https://docs.astral.sh/uv/).
 
 ## Disclaimer
-Microsoft® Windows™ is a registered trademark of Microsoft® Corporation. This name is used for referential use only, and does not aim to usurp copyrights from Microsoft. Microsoft Ⓒ 2026 All rights reserved. All resources belong to Microsoft Corporation.
+This project is not affiliated with Microsoft.
