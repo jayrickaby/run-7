@@ -8,6 +8,8 @@ import jayrickaby.run7.application 1.0
 import jayrickaby.run7.settings 1.0
 import jayrickaby.run7.system 1.0
 
+import "Components/Dialogs"
+
 ApplicationWindow {
     id: root
 
