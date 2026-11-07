@@ -2,6 +2,35 @@
 
 <!-- version list -->
 
+## v0.7.0 (2026-11-07)
+
+### Features
+
+- If on kde, use kde theme
+  ([`6f5c2a3`](https://github.com/jayrickaby/run-7/commit/6f5c2a3d9dcb6aeb6c05fabc447eda9563d8e4a6))
+
+- Readd InstructionDialog from Frutiger7 repo
+  ([`9ba7278`](https://github.com/jayrickaby/run-7/commit/9ba7278c67fa8b052ae66bb06ccaa332960e8cda))
+
+- Remove external folder & frutiger7 references in qml
+  ([`8036ad7`](https://github.com/jayrickaby/run-7/commit/8036ad7030272c2a925a4c638f7283940e1e86a1))
+
+- Remove instances of 'textvcenteroffset'
+  ([`b15b203`](https://github.com/jayrickaby/run-7/commit/b15b203a663e19a673ad408621e11c0f26182892))
+
+- Remove instructiondialog and replace with messagedialog
+  ([`41682a8`](https://github.com/jayrickaby/run-7/commit/41682a88cce08bbc2bb7230944a35c3b9892344f))
+
+- Remove references a frutiger7 asset directory
+  ([`4da2dc3`](https://github.com/jayrickaby/run-7/commit/4da2dc3783ad72676d75a98de5f3e1aad38ece67))
+
+- Set style to 'org.kde.desktop' on kde
+  ([`fc827bf`](https://github.com/jayrickaby/run-7/commit/fc827bf30313260eccb2a0054a3901cb3f585afe))
+
+- Simplify build process
+  ([`674f4ae`](https://github.com/jayrickaby/run-7/commit/674f4aec8f34b12e681dcfd4cfbeee7af3175f80))
+
+
 ## v0.6.0 (2026-07-20)
 
 ### Bug Fixes
