@@ -14,7 +14,6 @@ Originally made for the Hackclub Program [Macondo](https://macondo.hackclub.com/
 ## Features
 - Running applications, opening websites and viewing files.
 - A browse dialog to precisely choose an application.
-- A recreation of Window 7's Aero theme for increased accuracy.
 - Reactive text based on the OS you are using.
 - Run History showing the last 'n' items.
 - A config to customise parts of the application.
