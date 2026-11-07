@@ -10,13 +10,18 @@ from settings import settings
 from system import system
 
 if __name__ == "__main__": 
+    kde_qt_path = "/usr/lib64/qt6/"
+    
     # Load KDE Theme
-    # FIXME: This is not guaranteed to work, and needs QML2_IMPORT_PATH and QT_PLUGIN_PATH set
-    if not os.environ.get("QT_QUICK_CONTROLS_STYLE"):
-        kde_path = "/usr/lib64/qt6/qml"
+    # FIXME: This is not guaranteed to work, and is very hacky
+    if not os.environ.get("QT_QUICK_CONTROLS_STYLE") and os.path.isdir(kde_qt_path):
+        if not os.environ.get("QML2_IMPORT_PATH"):
+            os.environ["QML2_IMPORT_PATH"] = kde_qt_path + "/qml/"
 
-        if os.path.isdir(kde_path):
-            QQuickStyle.setStyle("org.kde.desktop")
+        if not os.environ.get("QT_PLUGIN_PATH"):
+            os.environ["QT_PLUGIN_PATH"] = kde_qt_path + "/plugins/"
+
+        QQuickStyle.setStyle("org.kde.desktop")
 
     app = QGuiApplication(sys.argv)
     app.setApplicationName(APP_NAME)
