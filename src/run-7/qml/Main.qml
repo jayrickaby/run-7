@@ -4,7 +4,6 @@ import QtQuick.Controls
 import QtQuick.Dialogs
 import QtQuick.Layouts
 
-import frutiger7
 import jayrickaby.run7.application 1.0
 import jayrickaby.run7.settings 1.0
 import jayrickaby.run7.system 1.0
