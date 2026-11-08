@@ -35,85 +35,102 @@ ApplicationWindow {
     leftPadding: 12
     rightPadding: 12
 
+    SystemPalette {
+        id: systemPalette
+        colorGroup: SystemPalette.Active
+    }
+
     ColumnLayout {
         anchors.fill: parent
         spacing: 0
 
-        RowLayout {
+        Rectangle {
             Layout.alignment: Qt.AlignTop
             Layout.fillWidth: true
-            Layout.bottomMargin: -15
-            spacing: 19
+            Layout.fillHeight: true
 
-            Image {
-                Layout.preferredWidth: 32
-                Layout.preferredHeight: 32
-                Layout.topMargin: 2
-                Layout.alignment: Qt.AlignTop
+            color: systemPalette.base
 
-                mipmap: true
+            ColumnLayout {
+                anchors.fill: parent
 
-                source: Settings.icon
-            }
-            Text {
-                Layout.preferredWidth: 319
-                Layout.preferredHeight: 41
-                Layout.alignment: Qt.AlignTop
+                RowLayout {
+                    Layout.alignment: Qt.AlignTop
+                    Layout.fillWidth: true
+                    Layout.bottomMargin: -15
+                    spacing: 19
 
-                text: `Type the name of a program, folder, document, or Internet resource, and ${System.os_name} will open it for you.`
+                    Image {
+                        Layout.preferredWidth: 32
+                        Layout.preferredHeight: 32
+                        Layout.topMargin: 2
+                        Layout.alignment: Qt.AlignTop
 
-                font.letterSpacing: 0.10
-                font.pointSize: 9
+                        mipmap: true
 
-                lineHeight: 0.95
-                renderType: Text.NativeRendering
-                wrapMode: Text.WordWrap
-            }
-        }
-        RowLayout {
-            Layout.alignment: Qt.AlignTop
-            Layout.fillWidth: true
-
-            spacing:9
-
-            Text {
-                Layout.preferredWidth: 42
-                Layout.preferredHeight: 19
-                Layout.alignment: Qt.AlignTop
-                Layout.topMargin: 3
-                text: "Open:"
-
-                font.pointSize: 9
-                renderType: Text.NativeRendering
-            }
-            ComboBox {
-                id: comboBox
-                editable: true
-
-                popup.closePolicy: Popup.NoAutoClose
-
-                Layout.fillWidth: true
-                Layout.preferredHeight: 23
-                Layout.alignment: Qt.AlignTop
-                Layout.rightMargin: 2
-
-                Component.onCompleted: {
-                    // Make sure current list is limited
-                    let currentQueue = Array.from(Settings.url_history);
-
-                    if (Settings.limit_history_size > -1) {
-                        while (currentQueue.length > Settings.limit_history_size) {
-                            currentQueue.pop();
-                        }
-
-                        Settings.set_url_history(currentQueue);
+                        source: Settings.icon
                     }
+                    Text {
+                        Layout.preferredWidth: 319
+                        Layout.preferredHeight: 41
+                        Layout.alignment: Qt.AlignTop
 
-                    // Set model only after adjusting it
-                    model = currentQueue;
+                        text: `Type the name of a program, folder, document, or Internet resource, and ${System.os_name} will open it for you.`
 
-                    if (model.length > 0) {
-                        contentItem.text = model[0];
+                        font.letterSpacing: 0.10
+                        font.pointSize: 9
+
+                        lineHeight: 0.95
+                        renderType: Text.NativeRendering
+                        wrapMode: Text.WordWrap
+                    }
+                }
+                RowLayout {
+                    Layout.alignment: Qt.AlignTop
+                    Layout.fillWidth: true
+
+                    spacing:9
+
+                    Text {
+                        Layout.preferredWidth: 42
+                        Layout.preferredHeight: 19
+                        Layout.alignment: Qt.AlignTop
+                        Layout.topMargin: 3
+                        text: "Open:"
+
+                        font.pointSize: 9
+                        renderType: Text.NativeRendering
+                    }
+                    ComboBox {
+                        id: comboBox
+                        editable: true
+
+                        popup.closePolicy: Popup.NoAutoClose
+
+                        Layout.fillWidth: true
+                        Layout.preferredHeight: 23
+                        Layout.alignment: Qt.AlignTop
+                        Layout.rightMargin: 2
+
+                        Component.onCompleted: {
+                            // Make sure current list is limited
+                            let currentQueue = Array.from(Settings.url_history);
+
+                            if (Settings.limit_history_size > -1) {
+                                while (currentQueue.length > Settings.limit_history_size) {
+                                    currentQueue.pop();
+                                }
+
+                                Settings.set_url_history(currentQueue);
+                            }
+
+                            // Set model only after adjusting it
+                            model = currentQueue;
+
+                            if (model.length > 0) {
+                                contentItem.text = model[0];
+                            }
+                        }
                     }
                 }
             }
