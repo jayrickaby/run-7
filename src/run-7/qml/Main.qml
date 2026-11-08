@@ -81,6 +81,8 @@ ApplicationWindow {
 
                         text: `Type the name of a program, folder, document, or Internet resource, and ${System.os_name} will open it for you.`
 
+                        color: palette.windowText
+
                         font.letterSpacing: 0.10
                         font.pointSize: 9
 
@@ -102,6 +104,7 @@ ApplicationWindow {
                         Layout.topMargin: 3
                         text: "Open:"
 
+                        color: palette.windowText
                         font.pointSize: 9
                         renderType: Text.NativeRendering
                     }
