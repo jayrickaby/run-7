@@ -2,6 +2,28 @@
 
 <!-- version list -->
 
+## v0.7.1 (2026-11-08)
+
+### Bug Fixes
+
+- Text colour
+  ([`897a4a7`](https://github.com/jayrickaby/run-7/commit/897a4a734a8c8fc891e1ab373a463d7389a8046a))
+
+### Features
+
+- Add 1px padding
+  ([`679d7df`](https://github.com/jayrickaby/run-7/commit/679d7dfe9231a669e15d948c9685e019306ec19f))
+
+- Add button padding
+  ([`53e08bf`](https://github.com/jayrickaby/run-7/commit/53e08bfba47e8a5f727bfe9482f7370870bde5a0))
+
+- Add padding to upper region
+  ([`fe2d1f0`](https://github.com/jayrickaby/run-7/commit/fe2d1f0050d28870041798e958cb1d8374c4a39b))
+
+- Add rectangle that uses the system base colour
+  ([`61adf67`](https://github.com/jayrickaby/run-7/commit/61adf67ee416cad0e52038210dc9af85f84d6741))
+
+
 ## v0.7.0 (2026-11-07)
 
 ### Features
