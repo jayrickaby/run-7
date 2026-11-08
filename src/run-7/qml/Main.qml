@@ -30,97 +30,126 @@ ApplicationWindow {
 
     flags: Qt.Window | Qt.WindowTitleHint | Qt.WindowSystemMenuHint | Qt.WindowCloseButtonHint
 
-    topPadding: 20
-    bottomPadding: 20
-    leftPadding: 12
-    rightPadding: 12
+    leftPadding: 1
+    rightPadding: 1
+    topPadding: 1
+    bottomPadding: 1
 
     ColumnLayout {
         anchors.fill: parent
         spacing: 0
 
-        RowLayout {
+        Rectangle {
             Layout.alignment: Qt.AlignTop
             Layout.fillWidth: true
-            Layout.bottomMargin: -15
-            spacing: 19
+            Layout.fillHeight: true
 
-            Image {
-                Layout.preferredWidth: 32
-                Layout.preferredHeight: 32
-                Layout.topMargin: 2
-                Layout.alignment: Qt.AlignTop
+            color: palette.base
 
-                mipmap: true
+            ColumnLayout {
+                anchors.fill: parent
+                anchors.leftMargin: 11
+                anchors.topMargin: 19
+                anchors.rightMargin: 11
+                anchors.bottomMargin: 19
 
-                source: Settings.icon
-            }
-            Text {
-                Layout.preferredWidth: 319
-                Layout.preferredHeight: 41
-                Layout.alignment: Qt.AlignTop
+                spacing: 0
 
-                text: `Type the name of a program, folder, document, or Internet resource, and ${System.os_name} will open it for you.`
+                RowLayout {
+                    Layout.alignment: Qt.AlignTop
+                    Layout.fillWidth: true
 
-                font.letterSpacing: 0.10
-                font.pointSize: 9
+                    spacing: 19
 
-                lineHeight: 0.95
-                renderType: Text.NativeRendering
-                wrapMode: Text.WordWrap
-            }
-        }
-        RowLayout {
-            Layout.alignment: Qt.AlignTop
-            Layout.fillWidth: true
+                    Image {
+                        Layout.alignment: Qt.AlignTop
 
-            spacing:9
+                        // Properly center
+                        Layout.topMargin: 2
 
-            Text {
-                Layout.preferredWidth: 42
-                Layout.preferredHeight: 19
-                Layout.alignment: Qt.AlignTop
-                Layout.topMargin: 3
-                text: "Open:"
+                        Layout.preferredWidth: 32
+                        Layout.preferredHeight: 32
 
-                font.pointSize: 9
-                renderType: Text.NativeRendering
-            }
-            ComboBox {
-                id: comboBox
-                editable: true
+                        mipmap: true
 
-                popup.closePolicy: Popup.NoAutoClose
-
-                Layout.fillWidth: true
-                Layout.preferredHeight: 23
-                Layout.alignment: Qt.AlignTop
-                Layout.rightMargin: 2
-
-                Component.onCompleted: {
-                    // Make sure current list is limited
-                    let currentQueue = Array.from(Settings.url_history);
-
-                    if (Settings.limit_history_size > -1) {
-                        while (currentQueue.length > Settings.limit_history_size) {
-                            currentQueue.pop();
-                        }
-
-                        Settings.set_url_history(currentQueue);
+                        source: Settings.icon
                     }
+                    Text {
+                        Layout.preferredWidth: 319
+                        Layout.preferredHeight: 41
+                        Layout.alignment: Qt.AlignTop
 
-                    // Set model only after adjusting it
-                    model = currentQueue;
+                        text: `Type the name of a program, folder, document, or Internet resource, and ${System.os_name} will open it for you.`
 
-                    if (model.length > 0) {
-                        contentItem.text = model[0];
+                        color: palette.windowText
+
+                        font.letterSpacing: 0.10
+                        font.pointSize: 9
+
+                        lineHeight: 0.95
+                        renderType: Text.NativeRendering
+                        wrapMode: Text.WordWrap
+                    }
+                }
+                RowLayout {
+                    Layout.alignment: Qt.AlignTop
+                    Layout.fillWidth: true
+
+                    spacing:9
+
+                    Text {
+                        Layout.preferredWidth: 42
+                        Layout.preferredHeight: 19
+                        Layout.alignment: Qt.AlignTop
+                        Layout.topMargin: 3
+                        text: "Open:"
+
+                        color: palette.windowText
+                        font.pointSize: 9
+                        renderType: Text.NativeRendering
+                    }
+                    ComboBox {
+                        id: comboBox
+                        editable: true
+
+                        popup.closePolicy: Popup.NoAutoClose
+
+                        Layout.fillWidth: true
+                        Layout.preferredHeight: 23
+                        Layout.alignment: Qt.AlignTop
+                        Layout.rightMargin: 2
+
+                        Component.onCompleted: {
+                            // Make sure current list is limited
+                            let currentQueue = Array.from(Settings.url_history);
+
+                            if (Settings.limit_history_size > -1) {
+                                while (currentQueue.length > Settings.limit_history_size) {
+                                    currentQueue.pop();
+                                }
+
+                                Settings.set_url_history(currentQueue);
+                            }
+
+                            // Set model only after adjusting it
+                            model = currentQueue;
+
+                            if (model.length > 0) {
+                                contentItem.text = model[0];
+                            }
+                        }
                     }
                 }
             }
         }
         RowLayout {
             Layout.alignment: Qt.AlignBottom | Qt.AlignRight
-            Layout.bottomMargin: -2
+
+            Layout.leftMargin: 11
+            Layout.topMargin: 17
+            Layout.rightMargin: 11
+            Layout.bottomMargin: 17
+
             Layout.fillWidth: true
 
             spacing: 8
@@ -159,6 +188,7 @@ ApplicationWindow {
     MessageDialog {
         // TODO: Critical Message
         id: cantFindDialog
+        
         title: comboBox.editText
         text: `${System.os_name} cannot find '${comboBox.editText}'. Make sure you typed the name correctly, and then try again.`
 
@@ -218,5 +248,7 @@ ApplicationWindow {
         onTriggered: root.close()
     }
 
-    onActiveChanged: { if (active) comboBox.selectAll(); }
+    onActiveChanged: { 
+        if (active) comboBox.selectAll(); 
+    }
 }
