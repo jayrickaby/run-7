@@ -53,18 +53,27 @@ ApplicationWindow {
 
             ColumnLayout {
                 anchors.fill: parent
+                anchors.leftMargin: 11
+                anchors.topMargin: 19
+                anchors.rightMargin: 11
+                anchors.bottomMargin: 19
+
+                spacing: 0
 
                 RowLayout {
                     Layout.alignment: Qt.AlignTop
                     Layout.fillWidth: true
-                    Layout.bottomMargin: -15
+
                     spacing: 19
 
                     Image {
+                        Layout.alignment: Qt.AlignTop
+
+                        // Properly center
+                        Layout.topMargin: 2
+
                         Layout.preferredWidth: 32
                         Layout.preferredHeight: 32
-                        Layout.topMargin: 2
-                        Layout.alignment: Qt.AlignTop
 
                         mipmap: true
 
