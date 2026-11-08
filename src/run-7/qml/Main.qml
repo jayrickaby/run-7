@@ -35,11 +35,6 @@ ApplicationWindow {
     topPadding: 1
     bottomPadding: 1
 
-    SystemPalette {
-        id: systemPalette
-        colorGroup: SystemPalette.Active
-    }
-
     ColumnLayout {
         anchors.fill: parent
         spacing: 0
@@ -49,7 +44,7 @@ ApplicationWindow {
             Layout.fillWidth: true
             Layout.fillHeight: true
 
-            color: systemPalette.base
+            color: palette.base
 
             ColumnLayout {
                 anchors.fill: parent
