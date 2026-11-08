@@ -20,5 +20,5 @@ int main(int argc, char *argv[]) {
 
     engine.loadFromModule("jayrickaby.run_7", "Main");
 
-    return 0;
+    return app.exec();
 }
