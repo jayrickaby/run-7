@@ -188,6 +188,7 @@ ApplicationWindow {
     MessageDialog {
         // TODO: Critical Message
         id: cantFindDialog
+        
         title: comboBox.editText
         text: `${System.os_name} cannot find '${comboBox.editText}'. Make sure you typed the name correctly, and then try again.`
 
@@ -247,5 +248,7 @@ ApplicationWindow {
         onTriggered: root.close()
     }
 
-    onActiveChanged: { if (active) comboBox.selectAll(); }
+    onActiveChanged: { 
+        if (active) comboBox.selectAll(); 
+    }
 }
