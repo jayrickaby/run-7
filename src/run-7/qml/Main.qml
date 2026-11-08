@@ -30,10 +30,10 @@ ApplicationWindow {
 
     flags: Qt.Window | Qt.WindowTitleHint | Qt.WindowSystemMenuHint | Qt.WindowCloseButtonHint
 
-    topPadding: 20
-    bottomPadding: 20
-    leftPadding: 12
-    rightPadding: 12
+    leftPadding: 1
+    rightPadding: 1
+    topPadding: 1
+    bottomPadding: 1
 
     SystemPalette {
         id: systemPalette
