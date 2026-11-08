@@ -137,7 +137,12 @@ ApplicationWindow {
         }
         RowLayout {
             Layout.alignment: Qt.AlignBottom | Qt.AlignRight
-            Layout.bottomMargin: -2
+
+            Layout.leftMargin: 11
+            Layout.topMargin: 17
+            Layout.rightMargin: 11
+            Layout.bottomMargin: 17
+
             Layout.fillWidth: true
 
             spacing: 8
