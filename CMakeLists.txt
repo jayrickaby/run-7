@@ -13,7 +13,10 @@ find_package(Qt6 REQUIRED COMPONENTS
 
 qt_standard_project_setup(REQUIRES 6.12.0)
 
-add_executable(run-7 src/main.cc
+add_executable(run-7 
+    src/main.cc
+    src/application/AppInfo.cc
+    src/application/AppInfo.h
 )
 
 qt_add_qml_module(run-7
@@ -25,6 +28,7 @@ qt_add_qml_module(run-7
 
 target_include_directories(run-7 PRIVATE
         ${CMAKE_CURRENT_SOURCE_DIR}/src
+        ${CMAKE_CURRENT_SOURCE_DIR}/src/application
 )
 
 # Qt for iOS sets MACOSX_BUNDLE_GUI_IDENTIFIER automatically since Qt 6.1.

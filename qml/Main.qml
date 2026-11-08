@@ -4,9 +4,7 @@ import QtQuick.Controls
 import QtQuick.Dialogs
 import QtQuick.Layouts
 
-import jayrickaby.run7.application 1.0
-import jayrickaby.run7.settings 1.0
-import jayrickaby.run7.system 1.0
+import jayrickaby.run_7
 
 ApplicationWindow {
     id: root
@@ -26,7 +24,7 @@ ApplicationWindow {
     maximumHeight: height
 
     visible: true
-    title: qsTr(Settings.title)
+    title: qsTr(AppInfo.title)
 
     flags: Qt.Window | Qt.WindowTitleHint | Qt.WindowSystemMenuHint | Qt.WindowCloseButtonHint
 
