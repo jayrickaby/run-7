@@ -15,7 +15,7 @@ public:
     QString getTitle();
 
 private:
-    QString m_defaultTitle {"Run–7"};
+    const QString m_defaultTitle {"Run–7"};
 };
 
 #endif
