@@ -26,7 +26,11 @@ public slots:
 private:
     const int m_defaultMaxSize {5};
 
-    QQueue<QString> m_items;
+    QQueue<QString> m_items {{
+        "hi",
+        "my name is",
+        "carmen winstead"
+    }};
 };
 
 #endif
