@@ -118,19 +118,7 @@ ApplicationWindow {
                         Layout.rightMargin: 2
 
                         Component.onCompleted: {
-                            // Make sure current list is limited
-                            let currentQueue = Array.from(Settings.url_history);
-
-                            if (Settings.limit_history_size > -1) {
-                                while (currentQueue.length > History.maxSize) {
-                                    currentQueue.pop();
-                                }
-
-                                Settings.set_url_history(currentQueue);
-                            }
-
-                            // Set model only after adjusting it
-                            model = currentQueue;
+                            model = Array.from(History.items);
 
                             if (model.length > 0) {
                                 contentItem.text = model[0];
