@@ -26,6 +26,8 @@ qt_add_qml_module(run-7
         RESOURCE_PREFIX /
         QML_FILES
             qml/Main.qml
+        RESOURCES
+            assets/icons/icon.png
 )
 
 target_include_directories(run-7 PRIVATE

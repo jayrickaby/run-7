@@ -70,7 +70,7 @@ ApplicationWindow {
 
                         mipmap: true
 
-                        source: Settings.icon
+                        source: AppInfo.icon
                     }
                     Text {
                         Layout.preferredWidth: 319
