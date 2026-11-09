@@ -122,7 +122,7 @@ ApplicationWindow {
                             let currentQueue = Array.from(Settings.url_history);
 
                             if (Settings.limit_history_size > -1) {
-                                while (currentQueue.length > Settings.limit_history_size) {
+                                while (currentQueue.length > History.maxSize) {
                                     currentQueue.pop();
                                 }
 

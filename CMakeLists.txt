@@ -17,6 +17,8 @@ add_executable(run-7
     src/main.cc
     src/application/AppInfo.cc
     src/application/AppInfo.h
+    src/application/History.cc
+    src/application/History.h
 )
 
 qt_add_qml_module(run-7
